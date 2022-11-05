@@ -17,7 +17,7 @@ class WilayahFactory extends Factory
     public function definition()
     {
         return [
-            'nama' => fake()->state(),
+            'nama' => fake()->unique()->state(),
         ];
     }
 }

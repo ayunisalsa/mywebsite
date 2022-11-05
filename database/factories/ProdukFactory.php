@@ -20,11 +20,11 @@ class ProdukFactory extends Factory
         $nama = fake()->word();
 
         return [
-            'wilayah_id' => \App\Models\Wilayah::factory(),
-            'user_id' => \App\Models\User::factory(),
+            // 'wilayah_id' => \App\Models\Wilayah::factory(),
+            // 'user_id' => \App\Models\User::factory(),
             'nama' => $nama,
             'slug' => Str::slug($nama, '_'),
-            'gambar' => fake()->imageUrl(),
+            'gambar' => 'https://picsum.photos/id/'. rand(1, 1000) .'/1000',
             'harga' => fake()->numberBetween(1000, 100000),
             'deskripsi' => fake()->text(),
         ];
