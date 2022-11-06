@@ -22,7 +22,7 @@ class SearchProduk extends Component
     public function render()
     {
         // get all data from table produk
-        $produks = Produk::with('wilayah')->take($this->numResults)->get();
+        $produks = Produk::with('wilayah')->where('verified', true)->take($this->numResults)->get();
 
         // search nama or wilayah
         if ($this->search != '') {
@@ -30,6 +30,7 @@ class SearchProduk extends Component
                 ->orWhereHas('wilayah', function ($query) {
                     $query->where('nama', 'like', '%' . $this->search . '%');
                 })
+                ->where('verified', true)
                 ->get();
         }
 
