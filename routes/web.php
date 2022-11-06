@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [App\Http\Controllers\ProdukController::class, 'index'])->name('index');
+Route::get('/tambah', [App\Http\Controllers\ProdukController::class, 'create'])->name('create');
+Route::post('/tambah', [App\Http\Controllers\ProdukController::class, 'store'])->name('store');

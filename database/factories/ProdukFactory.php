@@ -27,6 +27,7 @@ class ProdukFactory extends Factory
             'gambar' => 'https://picsum.photos/id/'. rand(1, 1000) .'/1000',
             'harga' => fake()->numberBetween(1000, 100000),
             'deskripsi' => fake()->text(),
+            'verified' => true,
         ];
     }
 }

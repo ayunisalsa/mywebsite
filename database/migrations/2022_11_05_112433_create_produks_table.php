@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('gambar')->nullable();
             $table->string('harga')->nullable();
             $table->text('deskripsi')->nullable();
+            $table->boolean('verified')->default(false);
             $table->timestamps();
         });
     }
