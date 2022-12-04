@@ -1,39 +1,100 @@
 <div>
-    <nav class="navbar bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand">Galery Oleh-Oleh Khas Daerah</a>
-            <div class="d-flex" role="search">
-                <input wire:model="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <a class="btn btn-primary" href="{{ route('create') }}" role="button">Tambah</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+            <a class="navbar-brand" href="#!">Galery Oleh-Oleh Khas Daerah</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <div class="d-flex" role="search">
+                        <input wire:model="search" class="form-control me-2" type="search" placeholder="Cari"
+                            aria-label="Search">
+                        <a class="btn btn-primary" href="{{ route('create') }}" role="button">Tambah</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <section class="section mt-3">
-        <div class="container">
-            <div class="row">
-                @foreach ($produks as $item)
-                    <div class="col-2">
-                        <div class="card mt-3">
-                            @if (Str::startsWith($item->gambar, 'http'))
-                                <img src="{{ $item->gambar }}" loading="lazy" class="card-img-top"
-                                    style="max-height: 128px;">
-                            @elseif (Str::length($item->gambar) > 40)
-                                <img src="{{ asset('storage/gambar') }}/{{ $item->gambar }}" loading="lazy"
-                                    class="card-img-top" style="max-height: 128px;">
-                            @else
-                                <img src="{{ asset('gambar') }}/{{ $item->gambar }}" loading="lazy" class="card-img-top"
-                                    style="max-height: 128px;">
-                            @endif
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $item->nama }}</h5>
-                                <p class="card-text">{{ $item->wilayah->nama }}</p>
-                                <a href="#" class="btn btn-primary">Detail</a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+    <!-- Page Content-->
+    <div class="container px-4 px-lg-5">
+        <!-- Heading Row-->
+        <div class="row gx-4 gx-lg-5 align-items-center my-5">
+            <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"
+                    src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="..." /></div>
+            <div class="col-lg-5">
+                <h1 class="font-weight-light">Business Name or Tagline</h1>
+                <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it,
+                    but it makes a great use of the standard Bootstrap core components. Feel free to use this template
+                    for any project you want!</p>
+                {{-- <a class="btn btn-primary" href="#!">Call to Action!</a> --}}
             </div>
         </div>
-    </section>
+        <!-- Call to Action-->
+        <div class="card text-white bg-secondary my-5 py-4 text-center">
+            <div class="card-body">
+                <p class="text-white m-0">This call to action card is a great place to showcase some important
+                    information or display a clever tagline!</p>
+            </div>
+        </div>
+        <!-- Content Row-->
+        <div class="row gx-4 gx-lg-5">
+            @foreach ($produks as $item)
+                <div class="col-md-4 mb-5">
+                    <div class="card h-100">
+
+                        @if (Str::startsWith($item->gambar, 'http'))
+                            <img class="card-img-top" src="{{ $item->gambar }}" loading="lazy"
+                                style="max-height: 250px;">
+                        @elseif (Str::length($item->gambar) > 40)
+                            <img class="card-img-top" src="{{ asset('storage/gambar') }}/{{ $item->gambar }}"
+                                loading="lazy" style="max-height: 250px;">
+                        @else
+                            <img class="card-img-top" src="{{ asset('gambar') }}/{{ $item->gambar }}" loading="lazy"
+                                style="max-height: 250px;">
+                        @endif
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $item->nama }}</h5>
+                            <p class="card-text">{{ $item->wilayah->nama }}</p>
+                        </div>
+
+                        <div class="card-footer">
+                            <!-- Button to Open the Modal -->
+                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#myModal{{ $item->id }}">
+                                Detail
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Modal -->
+                <div class="modal fade" id="myModal{{ $item->id }}">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">{{ $item->nama }}</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                Asal : {{ $item->wilayah->nama }} <br>
+                                Deskripsi : <br> {{ $item->deskripsi }} <br>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
 </div>
