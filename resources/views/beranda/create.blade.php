@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <nav class="navbar bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand">Galery Oleh-Oleh Khas Daerah</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+            <a class="navbar-brand" href="#!">Galery Oleh-Oleh Khas Daerah</a>
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col-lg" style="max-width: 1000px;">
                 <div class="card mt-3">
