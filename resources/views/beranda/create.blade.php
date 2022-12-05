@@ -3,7 +3,7 @@
 @section('content')
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container px-5">
-            <a class="navbar-brand" href="#!">Galery Oleh-Oleh Khas Daerah</a>
+            <a class="navbar-brand" href="#!">Galeri Oleh-Oleh Indonesia</a>
         </div>
     </nav>
 

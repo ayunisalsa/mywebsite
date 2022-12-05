@@ -29,7 +29,7 @@
     <!-- Footer-->
     <footer class="py-5 bg-dark mt-5">
         <div class="container px-4 px-lg-5">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Website Information 2022</p>
         </div>
     </footer>
 
